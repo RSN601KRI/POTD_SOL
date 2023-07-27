@@ -1,0 +1,28 @@
+class Solution {
+  public:
+  
+    // Convert a given tree to a tree where every node contains sum of values of
+    // nodes in left and right subtrees in the original tree
+    void toSumTree(Node *node)
+    {
+       if(node==NULL)return;
+       int l=0;
+       int r=0;
+       
+       node->data=0;
+        if(node->left){
+            node->data+=node->left->data;
+            toSumTree(node->left);
+            l=node->left->data;
+            node->data+=l;
+            
+        }
+        if(node->right){
+           node->data+=node->right->data;
+            toSumTree(node->right);
+            r=node->right->data;
+            node->data+=r;
+            
+        }
+    }
+};
