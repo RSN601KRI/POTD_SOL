@@ -1,0 +1,28 @@
+class Solution{
+public:
+
+   void solve(stack<int>& st, deque<int>& dq){
+       if(st.size()==0){
+            return;
+        }
+        int val = st.top();
+        st.pop();
+        dq.push_back(val);
+        solve(st, dq);
+        int val2 = dq.front();
+        dq.pop_front();
+        st.push(val2);
+   }
+
+    void Reverse(stack<int> &St){
+        if(St.size()==0){
+            return;
+        }
+        // int val = St.top();
+        // St.pop();
+        
+        // St.push(val);
+        deque<int> dq;
+        solve(St, dq);
+    }
+};
