@@ -1,0 +1,25 @@
+class Solution{
+    public:
+    //Complete this function
+    void solve(int index, string& vec, vector<string> &ans){
+        if(index==vec.size()){
+            ans.push_back(vec);
+            return;
+        }
+        
+        for(int i=index;i<vec.size();i++){
+            swap(vec[i], vec[index]);
+            solve(index+1, vec, ans);
+            swap(vec[i], vec[index]);
+        }
+    }
+   
+
+    vector<string> permutation(string S)
+    {
+        vector<string> ans;
+        solve(0,S, ans);
+        sort(ans.begin(), ans.end());
+        return ans;
+    }
+};
